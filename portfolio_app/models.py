@@ -10,7 +10,6 @@ class Student(models.Model):
         ("CSCI-BA", "BA in Computer Science"),
         ("DASE-BS", "BS in Data Analytics and Systems Engineering"),
     )
-
     name = models.CharField(max_length=200)
     email = models.EmailField("MSU Email")
     major = models.CharField(max_length=200, choices=MAJOR, blank=True)
@@ -18,12 +17,22 @@ class Student(models.Model):
     def __str__(self):
         return self.name
 
+
 class Portfolio(models.Model):
-    student = models.OneToOneField( Student, on_delete=models.CASCADE)
+    student = models.OneToOneField(Student, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    contact_email = models.EmailField()
+    contact_email = models.EmailField(max_length=200)
     is_active = models.BooleanField(default=True)
     about = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Project(models.Model):
+    portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    description = models.TextField()
 
     def __str__(self):
         return self.title
