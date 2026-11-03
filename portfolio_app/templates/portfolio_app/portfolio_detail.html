@@ -1,0 +1,13 @@
+{% extends "portfolio_app/base_template.html" %}
+
+{% block content %}
+
+<h2>{{ portfolio.title }}</h2>
+<p>Student: {{ student.name }}</p>
+<p>Contact Email: {{ portfolio.email }}</p>
+
+<a href="{% url 'students-detail' %}">
+    Back to Student
+</a>
+
+{% endblock %}
