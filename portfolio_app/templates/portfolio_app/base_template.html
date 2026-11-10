@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Portfolio Application</title>
 </head>
 <body>
     <header>
         <h1>Computer Science Portfolios</h1>
+        <nav>
+            <a href="{% url 'index' %}">Home</a> |
+            <a href="{% url 'student-list' %}">Students</a>
+        </nav>
     </header>
 
     <main>
