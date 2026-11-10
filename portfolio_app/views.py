@@ -17,3 +17,12 @@ class PortfolioDetailView(DetailView):
     model = Portfolio
     template_name = 'portfolio_app/portfolio_detail.html'
     context_object_name = 'portfolio'
+
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
+from .models import Student
+class StudentCreateView(CreateView):
+    model = Student
+    fields = ['name', 'email', 'major']
+    template_name = 'portfolio_app/student_form.html'
+    success_url = reverse_lazy('student-list')
